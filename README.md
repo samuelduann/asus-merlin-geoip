@@ -3,5 +3,7 @@
 支持两种格式的IP地址文件：
 
 1、Maxmind Legacy (https://legacy-geoip-csv.ufficyo.com/)
+    ./build-from-maxmind.sh
 
 2、APNIC (http://ftp.apnic.net/stats/apnic/delegated-apnic-latest)
+    ./build-from-apnic.sh
