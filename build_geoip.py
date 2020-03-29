@@ -45,6 +45,9 @@ def csv2bin(filename):
     for line in open(filename):
         fields = line.strip().split(',')
         cc = fields[4][1:-1]
+        # ipv6 not supported
+        if ":" in fields[0]:
+            continue
         records[cc].append([int(fields[2][1:-1]), int(fields[3][1:-1])])
 
     for r in records:
@@ -66,8 +69,10 @@ def csv2bin(filename):
             offset += 2 + 2 + 8 * len(records[r])
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print(f'usage: python {sys.argv[0]} <csv file>')
+    if len(sys.argv) != 3:
+        print(f'usage: python {sys.argv[0]} maxmind|apnic <file>')
         exit(1)
-    #csv2bin(sys.argv[1])
-    apnic2bin(sys.argv[1])
+    if sys.argv[1] == 'maxmind':
+        csv2bin(sys.argv[2])
+    else:
+        apnic2bin(sys.argv[2])
