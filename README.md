@@ -11,3 +11,9 @@
 2、APNIC (http://ftp.apnic.net/stats/apnic/delegated-apnic-latest)
 
     ./build-from-apnic.sh
+
+根据偏好选择上面的某一个命令运行完毕，在当前目录下就会生成geoipdb.bin和geoipdb.idx文件，复制到/var/geoip目录下即可。
+
+Q：选择Maxmind还是APNIC?
+
+我也还没来得及作详细的测试，简单的观察：Maxmind看似有大量人工编辑的条目，所以很多细碎的地址段；而APNIC粒度粗很多，而且只涉及亚太地区的数据，所以数据量小很多。按照我们一般会使用的路由规则，仅仅需要判断是否是中国IP，在这种场景下APNIC和Maxmind效果差别应该不大，而且APNIC数据精简很多！所以我选APNIC。
